@@ -2,7 +2,7 @@
 Grading System for schools, colleges and institutions<br />
 Step 1<br />
 ```bash
-git clone git@github.com:ShridharAware/Grading-System.git
+git clone git@github.com:ShridharAware/Grocery-App.git
 ```
 Step 2<br />
 ```bash
