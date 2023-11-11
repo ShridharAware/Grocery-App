@@ -1,4 +1,4 @@
-## Grading-System<br />
+## Grocery-App<br />
 Grading System for schools, colleges and institutions<br />
 Step 1<br />
 ```bash
