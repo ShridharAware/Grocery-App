@@ -1,0 +1,23 @@
+.footer{
+    margin-top: 50px;
+    height: 200px;
+    width: 100%;
+    background-color: rgb(204, 204, 204);
+}
+.links{
+    display: flex;
+    justify-content: space-between;
+   
+}
+.footerContent{
+margin: 35px;
+color: black;
+
+}
+.copyrights{
+    color: black;
+    background-color: #2727279f;
+    padding: 17px;
+    text-align: center;
+    width: 100%;
+}
