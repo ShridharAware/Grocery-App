@@ -1,5 +1,5 @@
 const FAQ: React.FC = () => {
-  return <h3>FAQ</h3>;
+  return <div>FAQ</div>;
 };
 
 export default FAQ;
