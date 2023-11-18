@@ -6,10 +6,10 @@ function NavbarApp() {
     <>
       <Navbar bg="light" expand="lg" data-bs-theme="light">
         <Navbar.Brand as={Link} to="/" className="text-center mx-auto">
-          Brand link
+          Grocery Application
         </Navbar.Brand>
       </Navbar>
-      <Navbar bg="light" expand="lg" data-bs-theme="light">
+      <Navbar bg="light" expand="sm" data-bs-theme="light">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
@@ -30,7 +30,7 @@ function NavbarApp() {
                   />
                 </Col>
                 <Col xs="auto">
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit">Search</Button>
                 </Col>
               </Row>
             </Form>
