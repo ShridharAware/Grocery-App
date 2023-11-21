@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Navbar, Nav, Form, Row, Col, Button } from "react-bootstrap";
+import { BsCart } from "react-icons/bs";
 
 function NavbarApp() {
   return (
@@ -40,6 +41,31 @@ function NavbarApp() {
             </Nav.Link>
             <Nav.Link as={NavLink} to="/faq">
               FAQs
+            </Nav.Link>
+          </Nav>
+          <Nav className="ml-auto">
+            <Nav.Link as={NavLink} to="/signup">
+              <BsCart
+                style={{
+                  marginRight: "10px",
+                  height: "1.5em",
+                  width: "1.5em",
+                }}
+              />
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/login">
+              <span
+                style={{
+                  padding: "8px",
+                  borderRadius: "5px",
+                  width: "5em",
+                  backgroundColor: "green",
+                  textAlign: "center",
+                  color: "whitesmoke",
+                }}
+              >
+                Login
+              </span>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

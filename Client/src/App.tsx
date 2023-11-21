@@ -11,26 +11,31 @@ import HomeCare from "./components/Categories/HomeCare/HomeCare.tsx";
 import Beverages from "./components/Categories/Beverages/Beverages.tsx";
 import Snacks from "./components/Categories/Snacks/Snacks.tsx";
 import Staples from "./components/Categories/Staples/Staples.tsx";
+import { ShopContext } from "./context/GroceryContext.tsx";
+import { useState } from "react";
 
 function App() {
+  const [count, setCount] = useState(0);
   return (
     <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/aboutus" element={<About />}></Route>
-          <Route path="/contactus" element={<Contact />}></Route>
-          <Route path="/faq" element={<FAQ />}></Route>
-          <Route path="/fruits" element={<Fruits />}></Route>
-          <Route path="/vegetables" element={<Vegetables />}></Route>
-          <Route path="/staples" element={<Staples />}></Route>
-          <Route path="/snacks" element={<Snacks />}></Route>
-          <Route path="/beverages" element={<Beverages />}></Route>
-          <Route path="/homecare" element={<HomeCare />}></Route>
-        </Routes>
-        <Footer />
-      </Router>
+      <ShopContext.Provider value={{ count, setCount }}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/aboutus" element={<About />}></Route>
+            <Route path="/contactus" element={<Contact />}></Route>
+            <Route path="/faq" element={<FAQ />}></Route>
+            <Route path="/fruits" element={<Fruits />}></Route>
+            <Route path="/vegetables" element={<Vegetables />}></Route>
+            <Route path="/staples" element={<Staples />}></Route>
+            <Route path="/snacks" element={<Snacks />}></Route>
+            <Route path="/beverages" element={<Beverages />}></Route>
+            <Route path="/homecare" element={<HomeCare />}></Route>
+          </Routes>
+          <Footer />
+        </Router>
+      </ShopContext.Provider>
     </>
   );
 }
