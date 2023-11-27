@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import { Navbar, Nav, Form, Row, Col, Button } from "react-bootstrap";
 import { BsCart } from "react-icons/bs";
+import { useShoppingContext } from "../../context/ShopCartContext";
 
 function NavbarApp() {
+  const { cartQuantity } = useShoppingContext();
   return (
     <>
       <Navbar bg="light" expand="lg" data-bs-theme="light">
@@ -44,7 +46,7 @@ function NavbarApp() {
             </Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Link as={NavLink} to="/signup">
+            <Nav.Link as={NavLink} to="/cart">
               <BsCart
                 style={{
                   marginRight: "10px",
@@ -52,6 +54,20 @@ function NavbarApp() {
                   width: "1.5em",
                 }}
               />
+              <span
+                className="rounded-circle bg-primary d-flex justify-content-center align-items-center"
+                style={{
+                  color: "white",
+                  width: "1.5rem",
+                  height: "1.5rem",
+                  position: "absolute",
+                  bottom: "30px",
+                  right: "68px",
+                  transform: "translate(1%,1%)",
+                }}
+              >
+                {cartQuantity}
+              </span>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/login">
               <span

@@ -1,62 +1,68 @@
-import { useContext } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
-import Logo from "../../assets/react.svg";
-import { BsPlus, BsDash } from "react-icons/bs";
-import { ShopContext } from "../../context/GroceryContext";
-interface CardProps {
-  data: {
-    id: number;
-    name: string;
-    price: number;
-  }[];
-}
+import { Card, Button } from "react-bootstrap";
+import { useShoppingContext } from "../../context/ShopCartContext";
+type CardProps = {
+  id: number;
+  name: string;
+  price: string;
+  image: string;
+  qty: number;
+};
 
-const CardAbstract: React.FC<CardProps> = ({ data }) => {
-  const { count, setCount } = useContext(ShopContext);
+const CardAbstract: React.FC<CardProps> = ({ ...data }) => {
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingContext();
+  const quantity = getItemQuantity(data.id);
   return (
-    <Container>
-      <Row>
-        {data.map((data) => (
-          <Col key={data.id}>
-            <Card
-              className="p-2 mb-3 ml-3"
-              style={{ width: "12rem", height: "17rem" }}
+    <Card
+      key={data.id}
+      className="p-2 mb-3 ml-3"
+      style={{ width: "16rem", height: "23rem" }}
+    >
+      <Card.Img variant="top" src={data.image} style={{ objectFit: "cover" }} />
+      <Card.Body>
+        <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
+          <span>{data.name}</span>
+          <span>{data.price}</span>
+        </Card.Title>
+        <div className="mt-auto">
+          {quantity === 0 ? (
+            <Button
+              className="w-100"
+              onClick={() => increaseCartQuantity(data.id)}
             >
-              <Card.Img variant="top" src={Logo} />
-              <Card.Title className="text-center">{data.name}</Card.Title>
-              <Card.Body>
-                <Row>
-                  <Col>{data.price}</Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <span
-                      className="btn btn-sm btn-primary"
-                      onClick={() => {
-                        setCount(count - 1);
-                      }}
-                    >
-                      <BsDash />
-                    </span>
-                  </Col>
-                  <Col className="text-center">{count}</Col>
-                  <Col>
-                    <span
-                      className="btn btn-sm btn-primary"
-                      onClick={() => {
-                        setCount(count + 1);
-                      }}
-                    >
-                      <BsPlus />
-                    </span>
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+              + Add To Cart
+            </Button>
+          ) : (
+            <div
+              className="d-flex align-items-center flex-column"
+              style={{ gap: ".5rem" }}
+            >
+              <div
+                className="d-flex align-items-center justify-content-center"
+                style={{ gap: ".5rem" }}
+              >
+                <Button onClick={() => decreaseCartQuantity(data.id)}>-</Button>
+                <div>
+                  <span className="fs-3">{quantity}</span> in cart
+                </div>
+                <Button onClick={() => increaseCartQuantity(data.id)}>+</Button>
+              </div>
+              <Button
+                onClick={() => removeFromCart(data.id)}
+                variant="danger"
+                size="sm"
+              >
+                Remove
+              </Button>
+            </div>
+          )}
+        </div>
+      </Card.Body>
+    </Card>
   );
 };
 
