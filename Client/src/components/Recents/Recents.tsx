@@ -1,5 +1,5 @@
 import { Card, Container, Col, Row } from "react-bootstrap";
-import Onion from "../../assets/recents.webp";
+import Onion from "../../assets/images/recents.webp";
 
 const Recents: React.FC = () => {
   return (

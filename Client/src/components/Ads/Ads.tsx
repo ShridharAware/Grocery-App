@@ -1,5 +1,5 @@
 import { Carousel } from "react-bootstrap";
-import CardImage from "../../assets/carousel.webp";
+import CardImage from "../../assets/images/carousel.webp";
 
 function Ads() {
   return (

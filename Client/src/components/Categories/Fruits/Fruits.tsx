@@ -1,6 +1,9 @@
 import { Row, Col, Container } from "react-bootstrap";
 import { faker } from "@faker-js/faker";
 import CardAbstract from "../../ui/Card";
+
+faker.seed(99);
+
 export const FruitsData = [...Array(20)].map(() => ({
   id: Number(faker.string.numeric(5)),
   name: faker.commerce.productName(),

@@ -49,7 +49,7 @@ function NavbarApp() {
             <Nav.Link as={NavLink} to="/cart">
               <BsCart
                 style={{
-                  marginRight: "10px",
+                  marginRight: "35px",
                   height: "1.5em",
                   width: "1.5em",
                 }}
@@ -62,7 +62,7 @@ function NavbarApp() {
                   height: "1.5rem",
                   position: "absolute",
                   bottom: "30px",
-                  right: "68px",
+                  right: "90px",
                   transform: "translate(1%,1%)",
                 }}
               >
