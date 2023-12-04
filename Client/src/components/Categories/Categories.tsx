@@ -11,7 +11,7 @@ const Categories: React.FC = () => {
         <Container>
           <Row>
             {categoriesData.map((item) => {
-              return <CategoriesItem {...item} />;
+              return <CategoriesItem key={item.url} {...item} />;
             })}
           </Row>
         </Container>

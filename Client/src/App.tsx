@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ShoppingCartProvider } from "./context/ShopCartContext.tsx";
 import Navbar from "./components/Navbar/Navbar.tsx";
 import Footer from "./components/Footer/Footer.tsx";
 import Home from "./pages/Home/Home.tsx";
@@ -11,8 +12,10 @@ import HomeCare from "./components/Categories/HomeCare/HomeCare.tsx";
 import Beverages from "./components/Categories/Beverages/Beverages.tsx";
 import Snacks from "./components/Categories/Snacks/Snacks.tsx";
 import Staples from "./components/Categories/Staples/Staples.tsx";
-import { ShoppingCartProvider } from "./context/ShopCartContext.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
+import Login from "./components/Login/Login.tsx";
+import Signup from "./components/Signup/Signup.tsx";
+import Dashboard from "./pages/Dashboard/Dashboard.tsx";
 
 function App() {
   return (
@@ -32,6 +35,9 @@ function App() {
             <Route path="/snacks" element={<Snacks />}></Route>
             <Route path="/beverages" element={<Beverages />}></Route>
             <Route path="/homecare" element={<HomeCare />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/signup" element={<Signup />}></Route>
+            <Route path="/dashboard" element={<Dashboard />}></Route>
           </Routes>
           <Footer />
         </Router>

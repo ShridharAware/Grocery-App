@@ -2,9 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 import { Navbar, Nav, Form, Row, Col, Button } from "react-bootstrap";
 import { BsCart } from "react-icons/bs";
 import { useShoppingContext } from "../../context/ShopCartContext";
+import { logout } from "../../utils/Logout";
 
 function NavbarApp() {
-  const { cartQuantity } = useShoppingContext();
+  const { cartQuantity, login, loggedOut } = useShoppingContext();
   return (
     <>
       <Navbar bg="light" expand="lg" data-bs-theme="light">
@@ -69,20 +70,38 @@ function NavbarApp() {
                 {cartQuantity}
               </span>
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/login">
-              <span
-                style={{
-                  padding: "8px",
-                  borderRadius: "5px",
-                  width: "5em",
-                  backgroundColor: "green",
-                  textAlign: "center",
-                  color: "whitesmoke",
-                }}
-              >
-                Login
-              </span>
-            </Nav.Link>
+            {login === false ? (
+              <Nav.Link as={NavLink} to="/login">
+                <span
+                  style={{
+                    padding: "8px",
+                    borderRadius: "5px",
+                    width: "5em",
+                    backgroundColor: "green",
+                    textAlign: "center",
+                    color: "whitesmoke",
+                  }}
+                >
+                  Login
+                </span>
+              </Nav.Link>
+            ) : (
+              <Nav.Link as={NavLink} to="/login">
+                <span
+                  style={{
+                    padding: "8px",
+                    borderRadius: "5px",
+                    width: "5em",
+                    backgroundColor: "maroon",
+                    textAlign: "center",
+                    color: "whitesmoke",
+                  }}
+                  onClick={() => logout(loggedOut)}
+                >
+                  Logout
+                </span>
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

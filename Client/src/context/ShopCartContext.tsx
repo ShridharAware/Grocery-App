@@ -12,6 +12,9 @@ type ShoppingCartContext = {
   clearCart: () => void;
   cartQuantity: number;
   cartItems: CartItem[];
+  login: boolean;
+  loggedIn: () => void;
+  loggedOut: () => void;
 };
 
 type CartItem = {
@@ -25,6 +28,11 @@ export function useShoppingContext() {
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
+  const [login, setLogin] = useLocalStorage("login", false);
+
+  const loggedIn = () => setLogin(true);
+  const loggedOut = () => setLogin(false);
+
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
     "shopping-cart",
     []
@@ -90,6 +98,9 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         clearCart,
         cartItems,
         cartQuantity,
+        login,
+        loggedIn,
+        loggedOut,
       }}
     >
       {children}
